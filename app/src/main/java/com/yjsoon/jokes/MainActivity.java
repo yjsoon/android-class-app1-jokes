@@ -12,6 +12,8 @@ import android.widget.TextView;
 
 public class MainActivity extends ActionBarActivity {
 
+    int mJokeNumber = 0; // start counting from 0 when coding!
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -37,8 +39,20 @@ public class MainActivity extends ActionBarActivity {
             @Override
             public void onClick(View v) {
                 Log.d("YJ", "Show next joke!!!");
-                jokeQuestionText.setText("Why couldn't the bicycle stand up by itself?");
-                punchlineText.setText("Because it was two tired");
+
+                mJokeNumber++; // this increments (increases by 1) the joke number
+
+                if (mJokeNumber == 1) { // show joke 1!
+                    jokeQuestionText.setText("Why couldn't the bicycle stand by itself?");
+                    punchlineText.setText("Because it was two tired!");
+                } else if (mJokeNumber == 2) { // show joke 2
+                    jokeQuestionText.setText("What do you call cheese that isn't yours?");
+                    punchlineText.setText("Nacho cheese!");
+                } else { // there are no more jokes :(
+                    jokeQuestionText.setText("There are no more jokes.");
+                    punchlineText.setText("Life is sad.");
+                }
+
                 punchlineText.setVisibility(View.INVISIBLE);
                 showNextJokeButton.setVisibility(View.INVISIBLE);
             }
